@@ -19,14 +19,20 @@ module.exports = {
             noteText: data.noteText
         };
 
-        Note.create(recentNote, function (er, doc){
+        Note.create(recentNote, function (err, document){
             if(err) {
                 console.log(err);
             }
             else {
-                console.log(doc);
+                console.log(document);
                 callback(document);
             }
         });
     },
-}
+
+    delete: function(data, callback) {
+        Note.remove({
+            _id: data._id
+        }, callback);
+    }
+};
